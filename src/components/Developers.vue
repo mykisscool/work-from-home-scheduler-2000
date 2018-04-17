@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <h1>The Work from Home Scheduler 2000&trade;</h1>
+      <h1>The Work from Home Scheduler 2000<sup>&trade;</sup></h1>
       <div class="row">
         <div class="col-lg-6">
           <div class="row">

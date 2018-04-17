@@ -1,3 +1,4 @@
+// @TODO Make this a class and make these constants dynamic/configurable
 const DAYSOFTHEWEEK = ['Monday', 'Tuesday', 'Wednesday', 'Thursday']; // Fridays are for Sprint Retrospectives
 const MAXDEVSPERDAY = 2; // Subject to change per department size
 
