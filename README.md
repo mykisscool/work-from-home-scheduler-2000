@@ -4,9 +4,9 @@ An opportunity to play with [Vue.js](https://vuejs.org/) and [Bootstrap 4](https
 
 [Give it a spin.](https://work-from-home-scheduler-2000.herokuapp.com/)
 
-> *There's always next week, Timmy.*
-
 ![Screen](/src/assets/screen.png?raw=true "There's always next week, Timmy")
+
+> *There's always next week, Timmy.*
 
 ## Build Setup
 
