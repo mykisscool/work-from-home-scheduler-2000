@@ -23,7 +23,7 @@
 <script>
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import scheduler from '../helpers/scheduler';
+import Scheduler from '../classes/Scheduler';
 
 export default {
   name: 'developer-table',
@@ -33,7 +33,8 @@ export default {
       this.$emit('remove', id);
     },
     scheduleDevelopers() {
-      this.$emit('scheduled', scheduler(this.developers));
+      let scheduler = new Scheduler(this.developers);
+      this.$emit('scheduled', scheduler.schedule());
     }
   }
 };
