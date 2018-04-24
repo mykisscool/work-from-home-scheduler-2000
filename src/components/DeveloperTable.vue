@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style scoped>
-  td {
+  table td {
     vertical-align: middle;
     text-align: center;
   }
