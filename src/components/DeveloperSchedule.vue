@@ -1,36 +1,27 @@
 <template>
   <div>
     <h3 v-if="isAnyoneScheduled">Schedule</h3>
-    <div class="card text-center"
-         v-for="(developers, day) in scheduled"
-         v-if="scheduled[day].length > 0">
-      <div class="card-header">
-        {{ day }}
+    <b-card class="text-center"
+            v-for="(developers, day) in scheduled"
+            v-if="scheduled[day].length > 0"
+            :header="day"
+            :key="day">
+      <div v-for="developer in developers">
+        <span>{{ developer.name }}</span>
       </div>
-      <div class="card-body">
-        <div v-for="developer in developers">
-            <span>{{ developer.name }}</span>
-        </div>
+    </b-card>
+    <b-card class="text-center" 
+            header="Unscheduled"
+            border-variant="danger"
+            v-if="unscheduled.length > 0">
+      <div v-for="(developer, index) in unscheduled">
+        <span>{{ developer.name }}</span>
       </div>
-    </div>
-    <div class="card text-white bg-danger text-center"
-         v-if="unscheduled.length > 0">
-      <div class="card-header">
-        Unscheduled
-      </div>
-      <div class="card-body">
-        <div v-for="(developer, index) in unscheduled">
-            <span>{{ developer.name }}</span>
-        </div>
-      </div>
-    </div>
+    </b-card>
   </div>
 </template>
 
 <script>
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
 export default {
   name: 'developer-schedule',
   props: ['scheduled', 'unscheduled'],

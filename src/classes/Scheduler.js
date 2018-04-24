@@ -1,11 +1,9 @@
-// @TODO Make this a class and make these constants dynamic/configurable
-const DAYSOFTHEWEEK = ['Monday', 'Tuesday', 'Wednesday', 'Thursday']; // Fridays are for Sprint Retrospectives
-const MAXDEVSPERDAY = 2; // Subject to change per department size
-
 export default class Scheduler {
 
-  constructor(developers) {
+  constructor(developers, availableDays, maxDevsPerDay) {
     this.developers = developers;
+    this.availableDays = availableDays;
+    this.maxDevsPerDay = maxDevsPerDay;
     this.scheduledDevelopers = {};
     this.unscheduledDevelopers = [];
   }
@@ -16,8 +14,8 @@ export default class Scheduler {
     let shuffledAvailableDays = this.getAllAvailableDaysShuffled();
 
     // Create "empty" schedule
-    for (let i = 0; i < DAYSOFTHEWEEK.length; i++) {
-      this.scheduledDevelopers[DAYSOFTHEWEEK[i]] = [];
+    for (let i = 0; i < this.availableDays.length; i++) {
+      this.scheduledDevelopers[this.availableDays[i]] = [];
     }
 
     // Assign a Developer to a slot from the available pool
@@ -59,8 +57,8 @@ export default class Scheduler {
   getAllAvailableDaysShuffled() {
     let availableDaysArray = [];
 
-    for (let i = 0; i < MAXDEVSPERDAY; i++) {
-      availableDaysArray = availableDaysArray.concat(DAYSOFTHEWEEK.slice());
+    for (let i = 0; i < this.maxDevsPerDay; i++) {
+      availableDaysArray = availableDaysArray.concat(this.availableDays.slice());
     }
 
     return this.shuffleArray(availableDaysArray);

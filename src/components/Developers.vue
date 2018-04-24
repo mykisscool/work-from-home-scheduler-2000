@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <div class="container">
-      <h1>The Work from Home Scheduler 2000<sup>&trade;</sup></h1>
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>The Work from Home Scheduler 2000<sup>&trade;</sup></h1>
+        </div>
+      </div>
       <div class="row">
         <div class="col-lg-6">
           <div class="row">
@@ -23,13 +27,19 @@
         </div>
       </div>
     </div>
+    <div>
+      <SettingsModal />
+    </div>
   </div>
 </template>
 
 <script>
-import DeveloperForm from './DeveloperForm';
-import DeveloperTable from './DeveloperTable';
-import DeveloperSchedule from './DeveloperSchedule';
+import DeveloperForm from './DeveloperForm'
+import DeveloperTable from './DeveloperTable'
+import DeveloperSchedule from './DeveloperSchedule'
+import SettingsModal from './SettingsModal'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
   name: 'developers',
@@ -69,7 +79,8 @@ export default {
   components: {
     DeveloperForm,
     DeveloperTable,
-    DeveloperSchedule
+    DeveloperSchedule,
+    SettingsModal
   }
 };
 </script>

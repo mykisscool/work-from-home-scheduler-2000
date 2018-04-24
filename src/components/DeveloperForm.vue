@@ -3,19 +3,23 @@
       <h3>Add Developers</h3>
       <div class="input-group">
         <div class="input-group-prepend">
-          <button class="btn btn-outline-primary" type="button"
-                  @click="addDeveloper">Add</button>
+          <b-btn variant="outline-primary"
+                 @click="addDeveloper">Add</b-btn>
         </div>
-          <input type="text" class="form-control" placeholder="Developer name" autofocus="autofocus"
-                 v-model="developer"
-                 @keyup.enter="addDeveloper" />
+        <input type="text" class="form-control" placeholder="Developer name" autofocus="autofocus"
+               v-model="developer"
+               @keyup.enter="addDeveloper" />
+        <div class="input-group-append">
+          <b-btn v-b-modal.modal-center variant="outline-secondary" size="sm">
+            <icon name="cog" scale="1.2" color="#bbb"></icon>
+          </b-btn>
+        </div>
       </div>
   </div>
 </template>
 
 <script>
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'vue-awesome/icons/cog'
 
 export default {
   name: 'developer-form',
@@ -44,3 +48,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  button.btn-outline-secondary {
+    padding-bottom: 0;
+  }
+</style>
