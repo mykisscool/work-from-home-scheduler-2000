@@ -16,6 +16,8 @@
           <div class="row">
             <div class="col-lg-12">
               <DeveloperTable :developers="developers"
+                              :scheduledDays="scheduledDays"
+                              :numDevs="numDevs"
                               @remove="removeDeveloper"
                               @scheduled="newSchedule" />
             </div>
@@ -28,7 +30,9 @@
       </div>
     </div>
     <div>
-      <SettingsModal />
+      <SettingsModal :numDevs="numDevs"
+                     :scheduledDays="scheduledDays"
+                     @settingsUpdated="updateSettings" />
     </div>
   </div>
 </template>
@@ -38,6 +42,7 @@ import DeveloperForm from './DeveloperForm'
 import DeveloperTable from './DeveloperTable'
 import DeveloperSchedule from './DeveloperSchedule'
 import SettingsModal from './SettingsModal'
+import Scheduler from '../classes/Scheduler'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -47,7 +52,9 @@ export default {
     return {
       developers: [],
       scheduled: {},
-      unscheduled: []
+      unscheduled: [],
+      numDevs: 2,
+      scheduledDays: [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday']
     };
   },
   methods: {
@@ -70,10 +77,20 @@ export default {
       }
 
       this.developers.push(developer);
+      this.newSchedule();
     },
-    newSchedule(schedule) {
+    newSchedule() {
+      let scheduler = new Scheduler(this.developers, this.scheduledDays, this.numDevs);
+      let schedule = scheduler.schedule()
+
       this.scheduled = schedule.scheduledDevelopers;
       this.unscheduled = schedule.unscheduledDevelopers;
+    },
+
+    updateSettings(numDevs, scheduledDays) {
+      this.numDevs = numDevs;
+      this.scheduledDays = scheduledDays;
+      this.newSchedule();
     }
   },
   components: {

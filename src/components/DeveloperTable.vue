@@ -16,27 +16,21 @@
     </table>
     <b-button variant="outline-primary"
               v-if="developers.length > 0"
-              @click="scheduleDevelopers">Create Schedule</b-button>
+              @click="scheduleDevelopers">Refresh Schedule</b-button>
     <p v-else><em>Please add Developers to create the schedule.</em></p>
   </div>
 </template>
 
 <script>
-import Scheduler from '../classes/Scheduler'
-
 export default {
   name: 'developer-table',
-  props: ['developers'],
+  props: ['developers', 'scheduledDays', 'numDevs' ],
   methods: {
     remove(id) {
       this.$emit('remove', id);
     },
     scheduleDevelopers() {
-      let availableDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday'];
-      let maxDevsPerDay = 2;
-      let scheduler = new Scheduler(this.developers, availableDays, maxDevsPerDay);
-
-      this.$emit('scheduled', scheduler.schedule());
+      this.$emit('scheduled');
     }
   }
 };

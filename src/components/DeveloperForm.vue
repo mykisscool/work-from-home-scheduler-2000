@@ -53,4 +53,8 @@ export default {
   button.btn-outline-secondary {
     padding-bottom: 0;
   }
+
+  button.btn-outline-secondary svg {
+    margin-bottom: -2px;
+  }
 </style>
