@@ -10,7 +10,8 @@ export default class Scheduler {
 
   // Creates and returns a weekly schedule
   schedule() {
-    let shuffledDevelopers = this.shuffleArray(this.developers);
+    let developersCopy = this.developers.slice();
+    let shuffledDevelopers = this.shuffleArray(developersCopy);
     let shuffledAvailableDays = this.getAllAvailableDaysShuffled();
 
     // Create "empty" schedule

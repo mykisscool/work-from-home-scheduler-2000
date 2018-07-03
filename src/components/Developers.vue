@@ -81,7 +81,7 @@ export default {
     },
     newSchedule() {
       let scheduler = new Scheduler(this.developers, this.scheduledDays, this.numDevs);
-      let schedule = scheduler.schedule()
+      let schedule = scheduler.schedule();
 
       this.scheduled = schedule.scheduledDevelopers;
       this.unscheduled = schedule.unscheduledDevelopers;
